@@ -1,16 +1,42 @@
 import Header from "./components/Header.jsx";
 import ListOfProjects from "./components/ListOfProjects.jsx";
 import { useState } from "react";
+import NewProject from "./components/NewProject.jsx";
 
 function App() {
+  const [projects, setProjects] = useState([]);
+  const [projectState, setProjectState] = useState("new");
+  const [selectedProject, setSelectedProject] = useState(null);
+
+  function addProjectHandler(projectData) {
+    setProjects((prevProjects) => [...prevProjects, projectData]);
+  }
+
+  function handleCancel() {
+    setProjectState("none");
+  }
+
+  function handleSelectedProject(project) {
+    setSelectedProject(project);
+    setProjectState("selected");
+  }
+
   return (
     <div className="min-h-screen bg-stone-100 text-stone-800">
-      <Header />     
-      <main>
-        <div className="text-center">
-          <p className="text-stone-600">No project selected.</p>
+      <Header />
+      {projectState === "new" && (
+        <NewProject onAddProject={addProjectHandler} onCancel={handleCancel} />
+      )}
+      {projectState === "selected" && (
+        <div className="text-center mt-4">
+          <p className="text-stone-600">Project: {selectedProject.title}</p>
         </div>
-        <ListOfProjects />
+      )}
+      <main>
+        <ListOfProjects
+          projects={projects}
+          onSelectedProject={handleSelectedProject}
+        />
       </main>
     </div>
   );

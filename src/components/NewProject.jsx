@@ -1,12 +1,22 @@
 import { useState } from "react";
 
-export default function NewProject() {
+export default function NewProject({ onAddProject, onCancel }) {
   const [enteredTitle, setEnteredTitle] = useState("");
   const [enteredDescription, setEnteredDescription] = useState("");
   const [enteredDueDate, setEnteredDueDate] = useState("");
 
+  function handleSubmit(event) {
+    event.preventDefault();
+    const projectData = {
+      title: enteredTitle,
+      description: enteredDescription,
+      dueDate: enteredDueDate,
+    };
+    onAddProject(projectData);
+  }
+
   return (
-    <form className="mt-4 text-right" action="">
+    <form className="mt-4 text-right px-4" onSubmit={handleSubmit}>
       <div className="mb-4">
         <label
           htmlFor="title"
@@ -53,14 +63,14 @@ export default function NewProject() {
         <button
           type="button"
           className="px-4 py-2 bg-stone-300 rounded hover:bg-stone-400"
-          // onCancel={} // define onCancel function
+          onClick={onCancel}
         >
           Cancel
         </button>
         <button
           type="submit"
           className="px-4 py-2 bg-stone-800 text-white rounded hover:bg-stone-700"
-          onSubmit={hadleSubmit} // define hadleSubmit function
+          onClick={{}}
         >
           Save
         </button>
