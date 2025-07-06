@@ -70,7 +70,6 @@ export default function NewProject({ onAddProject, onCancel }) {
         <button
           type="submit"
           className="px-4 py-2 bg-stone-800 text-white rounded hover:bg-stone-700"
-          onClick={{}}
         >
           Save
         </button>

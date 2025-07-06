@@ -8,8 +8,13 @@ function App() {
   const [projectState, setProjectState] = useState("new");
   const [selectedProject, setSelectedProject] = useState(null);
 
-  function addProjectHandler(projectData) {
-    setProjects((prevProjects) => [...prevProjects, projectData]);
+  function handleAddProject(projectData) {
+    const newProject = {
+      ...projectData,
+      id: Math.random().toString(),
+    };
+    setProjects((prevProjects) => [...prevProjects, newProject]);
+    setProjectState("none");
   }
 
   function handleCancel() {
@@ -25,7 +30,7 @@ function App() {
     <div className="min-h-screen bg-stone-100 text-stone-800">
       <Header />
       {projectState === "new" && (
-        <NewProject onAddProject={addProjectHandler} onCancel={handleCancel} />
+        <NewProject onAddProject={handleAddProject} onCancel={handleCancel} />
       )}
       {projectState === "selected" && (
         <div className="text-center mt-4">
