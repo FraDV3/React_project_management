@@ -26,6 +26,16 @@ function App() {
     setProjectState("selected");
   }
 
+  function handleDeleteProject(projectId) {
+    setProjects((prevProjects) =>
+      prevProjects.filter((project) => project.id !== projectId)
+    );
+    if (selectedProject && selectedProject.id === projectId) {
+      setSelectedProject(null);
+      setProjectState("new");
+    }
+  }
+
   return (
     <div className="min-h-screen bg-stone-100 text-stone-800">
       <Header />
@@ -41,6 +51,7 @@ function App() {
         <ListOfProjects
           projects={projects}
           onSelectedProject={handleSelectedProject}
+          onDeleteProject={handleDeleteProject}
         />
       </main>
     </div>
