@@ -2,6 +2,7 @@ import Header from "./components/Header.jsx";
 import ListOfProjects from "./components/ListOfProjects.jsx";
 import { useState } from "react";
 import NewProject from "./components/NewProject.jsx";
+import SelectedProject from "./components/SelectedProject.jsx";
 
 function App() {
   const [projects, setProjects] = useState([]);
@@ -32,27 +33,34 @@ function App() {
     );
     if (selectedProject && selectedProject.id === projectId) {
       setSelectedProject(null);
-      setProjectState("new");
+      setProjectState("none");
     }
+  }
+
+  function handleStartAddProject() {
+    setProjectState("new");
   }
 
   return (
     <div className="min-h-screen bg-stone-100 text-stone-800">
-      <Header />
+      <Header onStartAddProject={handleStartAddProject} />
       {projectState === "new" && (
         <NewProject onAddProject={handleAddProject} onCancel={handleCancel} />
       )}
       {projectState === "selected" && (
-        <div className="text-center mt-4">
-          <p className="text-stone-600">Project: {selectedProject.title}</p>
-        </div>
+        <SelectedProject
+          project={selectedProject}
+          onDelete={handleDeleteProject}
+        />
       )}
       <main>
-        <ListOfProjects
-          projects={projects}
-          onSelectedProject={handleSelectedProject}
-          onDeleteProject={handleDeleteProject}
-        />
+        {projectState === "none" && (
+          <ListOfProjects
+            projects={projects}
+            onSelectedProject={handleSelectedProject}
+            onDeleteProject={handleDeleteProject}
+          />
+        )}
       </main>
     </div>
   );

@@ -23,7 +23,7 @@ export default function ListOfProjects({ projects, onDeleteProject, onSelectedPr
           className="mb-4 p-4 bg-white rounded-lg shadow hover:shadow-lg transition-shadow duration-200"
         >
           <h3
-            onClick={() => onSelectedProject(project.id)}
+            onClick={() => onSelectedProject(project)}
             className="text-lg font-semibold text-stone-800"
           >
             {project.title}
