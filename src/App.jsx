@@ -1,5 +1,5 @@
 import Sidebar from "./components/Sidebar.jsx";
-import ListOfProjects from "./components/ListOfProjects.jsx";
+import ProjectsList from "./components/ProjectsList.jsx";
 import { useState } from "react";
 import NewProject from "./components/NewProject.jsx";
 import SelectedProject from "./components/SelectedProject.jsx";
@@ -55,10 +55,11 @@ function App() {
           <NewProject onAddProject={handleAddProject} onCancel={handleCancel} />
         )}
         {projectState === "none" && (
-          <ListOfProjects
+          <ProjectsList
             projects={projects}
             onSelectedProject={handleSelectedProject}
             onDeleteProject={handleDeleteProject}
+            onStartAddProject={handleStartAddProject}
           />
         )}
       </main>

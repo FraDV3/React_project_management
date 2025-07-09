@@ -1,10 +1,11 @@
 import NoProjectImage from "../assets/no-projects.png";
 import AddProjectButton from "./AddProjectButton.jsx";
 
-export default function ListOfProjects({
+export default function ProjectsList({
   projects,
   onDeleteProject,
   onSelectedProject,
+  onStartAddProject,
 }) {
   if (!projects || projects.length === 0) {
     return (
@@ -19,7 +20,9 @@ export default function ListOfProjects({
         </h2>
         <p className="text-stone-400 mb-4">Start by adding one!</p>
         <p className="mt-8">
-          <AddProjectButton>Create a new project</AddProjectButton>
+          <AddProjectButton onClick={onStartAddProject}>
+            Create a new project
+          </AddProjectButton>
         </p>
       </div>
     );

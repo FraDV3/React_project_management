@@ -1,4 +1,4 @@
-import AddProjectButton from './AddProjectButton.jsx';
+import AddProjectButton from "./AddProjectButton.jsx";
 
 export default function Sidebar({ onStartAddProject }) {
   return (
@@ -6,7 +6,9 @@ export default function Sidebar({ onStartAddProject }) {
       <h2 className="mb-8  md:text-xl uppercase font-bold text-stone-200">
         Project Manager
       </h2>
-      <AddProjectButton>+ Add Project</AddProjectButton>
+      <AddProjectButton onClick={onStartAddProject}>
+        + Add Project
+      </AddProjectButton>
     </aside>
   );
 }
