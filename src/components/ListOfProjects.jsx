@@ -1,16 +1,26 @@
-export default function ListOfProjects({ projects, onDeleteProject, onSelectedProject }) {
+import NoProjectImage from "../assets/no-projects.png";
+import AddProjectButton from "./AddProjectButton.jsx";
+
+export default function ListOfProjects({
+  projects,
+  onDeleteProject,
+  onSelectedProject,
+}) {
   if (!projects || projects.length === 0) {
     return (
-      <div className="mt-16 text-center">
+      <div className="mt-24 text-center w-2/3">
         <img
-          className="mx-auto w-40 opacity-75"
-          src="src/assets/no-projects.png"
-          alt="No projects available"
+          className="mx-auto w-16 h-16 object-contain opacity-75 "
+          src={NoProjectImage}
+          alt="An empty task list image"
         />
-        <h2 className="text-xl font-bold text-stone-700 my-4">
-          No projects yet...
+        <h2 className="text-xl font-bold text-stone-500 my-4">
+          No projects selected
         </h2>
-        <p className="text-stone-600">Start by adding one!</p>
+        <p className="text-stone-400 mb-4">Start by adding one!</p>
+        <p className="mt-8">
+          <AddProjectButton>Create a new project</AddProjectButton>
+        </p>
       </div>
     );
   }

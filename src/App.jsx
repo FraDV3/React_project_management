@@ -1,4 +1,4 @@
-import Header from "./components/Header.jsx";
+import Sidebar from "./components/Sidebar.jsx";
 import ListOfProjects from "./components/ListOfProjects.jsx";
 import { useState } from "react";
 import NewProject from "./components/NewProject.jsx";
@@ -43,17 +43,17 @@ function App() {
 
   return (
     <div className="min-h-screen bg-stone-100 text-stone-800">
-      <Header onStartAddProject={handleStartAddProject} />
-      {projectState === "new" && (
-        <NewProject onAddProject={handleAddProject} onCancel={handleCancel} />
-      )}
       {projectState === "selected" && (
         <SelectedProject
           project={selectedProject}
           onDelete={handleDeleteProject}
         />
       )}
-      <main>
+      <main className="h-screen my-8 flex gap-8">
+        <Sidebar onStartAddProject={handleStartAddProject} />
+        {projectState === "new" && (
+          <NewProject onAddProject={handleAddProject} onCancel={handleCancel} />
+        )}
         {projectState === "none" && (
           <ListOfProjects
             projects={projects}

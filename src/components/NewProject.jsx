@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Input from "./Input.jsx";
 
 export default function NewProject({ onAddProject, onCancel }) {
   const [enteredTitle, setEnteredTitle] = useState("");
@@ -16,8 +17,36 @@ export default function NewProject({ onAddProject, onCancel }) {
   }
 
   return (
-    <form className="mt-4 text-right px-4" onSubmit={handleSubmit}>
-      <div className="mb-4">
+    <div className="w-[35rem] mt-16">
+      <menu className="flex justify-end items-center gap-4 my-4 px-4">
+        <li className="flex justify-end space-x-2">
+          <button
+            type="button"
+            className="text-stone-800 hover:text-stone-950"
+            onClick={onCancel}
+          >
+            Cancel
+          </button>
+        </li>
+        <li>
+          <button
+            type="submit"
+            className="px-6 py-2 bg-stone-800 text-stone-50 rounded-md hover:bg-stone-950"
+          >
+            Save
+          </button>
+        </li>
+      </menu>
+      <form className="mt-4 text-right px-4" onSubmit={handleSubmit}>
+        <Input label="Title" />
+        <Input label="Description" textarea />
+        <Input label="Due Date" />
+      </form>
+    </div>
+  );
+}
+
+/* <div className="mb-4">
         <label
           htmlFor="title"
           className="text-sm font-bold uppercase text-stone-500"
@@ -58,22 +87,4 @@ export default function NewProject({ onAddProject, onCancel }) {
           value={enteredDueDate}
           onChange={(event) => setEnteredDueDate(event.target.value)}
         />
-      </div>
-      <div className="flex justify-end space-x-2">
-        <button
-          type="button"
-          className="px-4 py-2 bg-stone-300 rounded hover:bg-stone-400"
-          onClick={onCancel}
-        >
-          Cancel
-        </button>
-        <button
-          type="submit"
-          className="px-4 py-2 bg-stone-800 text-white rounded hover:bg-stone-700"
-        >
-          Save
-        </button>
-      </div>
-    </form>
-  );
-}
+      </div> */
