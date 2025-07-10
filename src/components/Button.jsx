@@ -1,4 +1,4 @@
-export default function AddProjectButton({ children, onClick }) {
+export default function Button({ children, onClick }) {
   return (
     <button
       onClick={onClick}

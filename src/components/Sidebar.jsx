@@ -1,4 +1,4 @@
-import AddProjectButton from "./AddProjectButton.jsx";
+import Button from "./Button.jsx";
 
 export default function Sidebar({ onStartAddProject, projects }) {
   return (
@@ -7,9 +7,9 @@ export default function Sidebar({ onStartAddProject, projects }) {
         Project Manager
       </h2>
       <div>
-        <AddProjectButton onClick={onStartAddProject}>
+        <Button onClick={onStartAddProject}>
           + Add Project
-        </AddProjectButton>
+        </Button>
       </div>
       <ul className="mt-8">
         {(projects ?? []).map((project) => (

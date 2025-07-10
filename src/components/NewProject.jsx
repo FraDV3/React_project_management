@@ -1,6 +1,7 @@
 import { useState, useRef } from "react";
 import Input from "./Input.jsx";
 import Modal from "./Modal.jsx";
+import Button from "./Button.jsx";
 
 export default function NewProject({ onAddProject, onCancel }) {
   const [enteredTitle, setEnteredTitle] = useState("");
@@ -24,7 +25,10 @@ export default function NewProject({ onAddProject, onCancel }) {
 
   return (
     <>
-      <Modal ref={modal} />
+      <Modal ref={modal} buttonCaption="Close">
+        <h2 className="text-xl font-bold text-stone-700 my-4">Invalid Input</h2>
+        <p className="text-stone-600 mb-4">Please fill in all fields.</p>
+      </Modal>
       <div className="w-[35rem] mt-16">
         <h2 className="text-2xl font-bold text-stone-400 px-4">
           Create a New Project
@@ -58,12 +62,7 @@ export default function NewProject({ onAddProject, onCancel }) {
               </button>
             </li>
             <li>
-              <button
-                type="submit"
-                className="px-6 py-2 bg-stone-800 text-stone-50 rounded-md hover:bg-stone-950"
-              >
-                Save
-              </button>
+              <Button type="submit">Save</Button>
             </li>
           </menu>
         </form>

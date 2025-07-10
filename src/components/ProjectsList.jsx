@@ -1,5 +1,5 @@
 import NoProjectImage from "../assets/no-projects.png";
-import AddProjectButton from "./AddProjectButton.jsx";
+import Button from "./Button.jsx";
 
 export default function ProjectsList({
   projects,
@@ -20,9 +20,9 @@ export default function ProjectsList({
         </h2>
         <p className="text-stone-400 mb-4">Start by adding one!</p>
         <p className="mt-8">
-          <AddProjectButton onClick={onStartAddProject}>
+          <Button onClick={onStartAddProject}>
             Create a new project
-          </AddProjectButton>
+          </Button>
         </p>
       </div>
     );
