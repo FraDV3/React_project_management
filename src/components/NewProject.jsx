@@ -1,28 +1,39 @@
+// Import necessary hooks and components
 import { useState, useRef } from "react";
 import Input from "./Input.jsx";
 import Modal from "./Modal.jsx";
 import Button from "./Button.jsx";
 
+// Component to handle creation of a new project, including input validation and submission
 export default function NewProject({ onAddProject, onCancel }) {
+  // State to store user input for title
   const [enteredTitle, setEnteredTitle] = useState("");
+  // State to store user input for description
   const [enteredDescription, setEnteredDescription] = useState("");
+  // State to store user input for due date
   const [enteredDueDate, setEnteredDueDate] = useState("");
+  // Ref to control the modal dialog
   const modal = useRef();
 
+  // Handle form submission with validation
   function handleSubmit(event) {
     event.preventDefault();
+    // Show modal if any input is missing
     if (!enteredTitle || !enteredDueDate || !enteredDescription) {
       modal.current.open();
       return;
     }
+    // Construct project object from input values
     const projectData = {
       title: enteredTitle,
       description: enteredDescription,
       dueDate: enteredDueDate,
     };
+    // Call parent function to add the project
     onAddProject(projectData);
   }
 
+  // Render form with inputs and modal for validation feedback
   return (
     <>
       <Modal ref={modal} buttonCaption="Close">
