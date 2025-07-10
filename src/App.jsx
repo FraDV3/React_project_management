@@ -6,7 +6,7 @@ import SelectedProject from "./components/SelectedProject.jsx";
 
 function App() {
   const [projects, setProjects] = useState([]);
-  const [projectState, setProjectState] = useState("new");
+  const [projectState, setProjectState] = useState("none");
   const [selectedProject, setSelectedProject] = useState(null);
 
   function handleAddProject(projectData) {
@@ -50,7 +50,10 @@ function App() {
         />
       )}
       <main className="h-screen my-8 flex gap-8">
-        <Sidebar onStartAddProject={handleStartAddProject} />
+        <Sidebar
+          onStartAddProject={handleStartAddProject}
+          projects={projects}
+        />
         {projectState === "new" && (
           <NewProject onAddProject={handleAddProject} onCancel={handleCancel} />
         )}
